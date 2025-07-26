@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html>
 
-<head>
 
+<head>
+	<img src="dvd_logo.png" id="logo" style="position: absolute;">
 <style>
-body {
-	background-color: black;
-}
+	body {
+		background-color: black;
+	}
 </style>
+
+<script>
+	const logo = document.getElementById("logo");
+
+	let x_logo = 0;
+	let y_logo = 0;
+
+	let w = window.innerWidth;
+	let h = window.innerHeight;
+	
+	function moveLogo() {
+		logo.style.left = x_logo + "px";
+		logo.style.top = y_logo + "px";
+		x_logo += 1;
+		y_logo += 1;
+	}
+
+	const interval = setInterval(moveLogo, 10);
+</script>
 
 </head>
 
+
 <body>
-	<img src="dvd_logo.png">
 </body>
+
 
 </html>
