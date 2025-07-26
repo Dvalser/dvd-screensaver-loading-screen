@@ -3,7 +3,7 @@
 
 
 <head>
-	<img src="dvd_logo.png" id="logo" style="position: absolute; width: 300px; height: 300px;">
+	<img src="dvd_logo.png" id="logo" style="position: absolute; width: 453px; height: 204px;">
 <style>
 	body {
 		background-color: black;
@@ -12,35 +12,52 @@
 
 <script>
 	const logo = document.getElementById("logo");
+	logo.style.filter = `saturate(0)`;
 
+	// Logo position
 	let x_logo = 0;
 	let y_logo = 0;
 
+	// Screen size
 	let w = window.innerWidth;
 	let h = window.innerHeight;
 	
+	// Move speed
 	let x_dir = 2;
 	let y_dir = 2;
 
+	function changeColor() {
+		const randomHue = Math.floor(Math.random() * 360); 
+		logo.style.filter = `hue-rotate(${randomHue}deg) saturate(1.5)`;
+	}
+	
 	function moveLogo() {
-		if ((x_logo + 300) > w) {
+		// Hit right/left wall
+		if ((x_logo + 453) > w) {
 			x_dir = -x_dir;
+			changeColor();
 		} else if (x_logo < 0) {
 			x_dir = -x_dir;
+			changeColor();
 		}
 
-		if ((y_logo + 300) > h) {
+		// Hit bottow/top wall
+		if ((y_logo + 204) > h) {
 			y_dir = -y_dir;
+			changeColor();
 		} else if (y_logo < 0) {
 			y_dir = -y_dir;
+			changeColor();
 		}
 
+		// Apply movement
 		logo.style.left = x_logo + "px";
 		logo.style.top = y_logo + "px";
 		x_logo += x_dir;
 		y_logo += y_dir;
 	}
 
+	// Call "moveLogo" every 10 ms
 	const interval = setInterval(moveLogo, 10);
 </script>
 
