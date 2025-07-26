@@ -3,7 +3,7 @@
 
 
 <head>
-	<img src="dvd_logo.png" id="logo" style="position: absolute;">
+	<img src="dvd_logo.png" id="logo" style="position: absolute; width: 300px; height: 300px;">
 <style>
 	body {
 		background-color: black;
@@ -19,11 +19,26 @@
 	let w = window.innerWidth;
 	let h = window.innerHeight;
 	
+	let x_dir = 2;
+	let y_dir = 2;
+
 	function moveLogo() {
+		if ((x_logo + 300) > w) {
+			x_dir = -x_dir;
+		} else if (x_logo < 0) {
+			x_dir = -x_dir;
+		}
+
+		if ((y_logo + 300) > h) {
+			y_dir = -y_dir;
+		} else if (y_logo < 0) {
+			y_dir = -y_dir;
+		}
+
 		logo.style.left = x_logo + "px";
 		logo.style.top = y_logo + "px";
-		x_logo += 1;
-		y_logo += 1;
+		x_logo += x_dir;
+		y_logo += y_dir;
 	}
 
 	const interval = setInterval(moveLogo, 10);
